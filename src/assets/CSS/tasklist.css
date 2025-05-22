@@ -1,0 +1,9 @@
+
+.taskList{
+    width: 500px;
+}
+.task{
+    background: #cfcbcb;
+    cursor: pointer;
+    margin: 10px 0px;
+}

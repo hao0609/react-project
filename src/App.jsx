@@ -1,6 +1,8 @@
 
-import { useState } from "react";
-import Header from './assets/component/Header.jsx'
+import { useState,useEffect } from "react";
+import Header from './component/Header.jsx'
+import TaskList from './component/TaskList.jsx'
+
 
 
 function App() {
@@ -20,13 +22,28 @@ function App() {
 
 
   const add_list = () =>{
-    if(task !== ''){
-    newTaskList([...taskList,task])
-    // console.log(taskList);
+    if (task !== '') {
+      newTaskList([...taskList,task])
     }
-    newTask('')
-  
+
   }
+
+  const delete_task = (index)=>{
+    console.log(index);
+
+  }
+
+  // React 的生命週期 useEffect 
+  // useEffect (()=>{},[])
+  // 若後方為空陣列，代表組件掛載時會執行一次 (等於 VUE onMounted)
+  // 若後方為陣列裡放偵測的資料，組件掛載時會執行一次，資料變動時會再次執行  
+  // (類似 VUE watch，但 watch 預設組件掛載時不會執行一次)
+  // ex:  useEffect(() => {function}, [value1,value2])，只要其中一筆資料變動就會執行
+  
+  // useEffect(()=>{
+  //   console.log(taskList);
+    
+  // },[taskList])
   
 
   return (
@@ -38,11 +55,7 @@ function App() {
         <input type="text" value={task} onChange={Change}/>
 
         <button onClick={add_list}>add</button>
-        <ol>
-          {
-              taskList.map((item,index)=><li key={index}>{item}</li>)
-          }
-        </ol> 
+        <TaskList  taskList={taskList} delete_task={delete_task}/>
    </>
 
    
