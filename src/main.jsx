@@ -5,13 +5,15 @@ import { BrowserRouter } from "react-router-dom";
 // import './index.css'
 import App from './App.jsx'
 
+// 引入 Router 配置表
+import RouterSetting from "./router/router.jsx";
 
 createRoot(document.getElementById('root')).render(
   
   <StrictMode>
     {/* Add this for Router */}
     <BrowserRouter>
-        <App />
+        <RouterSetting/>
     </BrowserRouter>
   </StrictMode>,
 )
